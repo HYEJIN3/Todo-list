@@ -13,6 +13,13 @@ const Input = styled.input`
   font-size: 16px;
   border: none;
   border-radius: 24px;
+  background-color: #e5e5e5;
+  &::placeholder {
+    color: #b9b9b9;
+  }
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const TodoInput: React.FC<TodoInputProps> = ({ onAdd }) => {
