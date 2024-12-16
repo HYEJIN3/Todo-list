@@ -6,7 +6,8 @@
     "dev": "next dev -p 3000",
     "build": "yarn test && next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@emotion/core": "^11.0.0",
