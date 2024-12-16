@@ -7,17 +7,23 @@ import { TodoList } from "../TodoList";
 import { useTodoStore } from "../../hooks/useTodoStore";
 
 const Container = styled.div`
-  max-width: 500px;
+  max-width: 737px;
   margin: 0 auto;
   padding: 20px;
+`;
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: #f6f6f6;
 `;
 
 const Title = styled.div`
   display: flex;
   justify-content: center;
-  line-height: 72px;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 56px;
+  padding: 32px;
 `;
 
 export const TodoUserListPage: React.FC = () => {
@@ -25,16 +31,18 @@ export const TodoUserListPage: React.FC = () => {
     useTodoStore();
 
   return (
-    <Container>
-      <Title>Todo List</Title>
-      <TodoInput onAdd={addTodo} />
-      <TodoList
-        todos={todos}
-        filter={filter}
-        onCompleted={completedTodo}
-        onDelete={deleteTodo}
-        onFilterChange={setFilter}
-      />
-    </Container>
+    <Wrapper>
+      <Container>
+        <Title>To Do List</Title>
+        <TodoInput onAdd={addTodo} />
+        <TodoList
+          todos={todos}
+          filter={filter}
+          onCompleted={completedTodo}
+          onDelete={deleteTodo}
+          onFilterChange={setFilter}
+        />
+      </Container>
+    </Wrapper>
   );
 };

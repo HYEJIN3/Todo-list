@@ -12,7 +12,7 @@ interface TodoItemProps {
 const Item = styled.li`
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 10px 0;
 `;
 
 const CheckboxContainer = styled.div`

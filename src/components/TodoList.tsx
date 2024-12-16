@@ -14,6 +14,8 @@ interface TodoListProps {
 const ListContainer = styled.div`
   background-color: #ffffff;
   margin-top: 12px;
+  border-radius: 24px;
+  padding: 32px;
 `;
 
 const List = styled.ul`
@@ -32,6 +34,7 @@ const FilterButton = styled.button<{ active: boolean }>`
   border-radius: 12px;
   color: ${(props) => (props.active ? "#2182F3" : "black")};
   font-weight: 600;
+  font-size: 16px;
   border: none;
   cursor: pointer;
 `;

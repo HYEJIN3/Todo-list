@@ -9,8 +9,8 @@ interface TodoInputProps {
 
 const Input = styled.input`
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
+f  padding: 32px;
+  font-size: 20px;
   border: none;
   border-radius: 24px;
   background-color: #e5e5e5;
@@ -20,6 +20,11 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
+`;
+
+const TitleInputContainer = styled.div`
+  width: 100%;
+  display: flex;
 `;
 
 export const TodoInput: React.FC<TodoInputProps> = ({ onAdd }) => {
@@ -37,13 +42,15 @@ export const TodoInput: React.FC<TodoInputProps> = ({ onAdd }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="할 일을 입력해주세요"
-        maxLength={20}
-      />
+      <TitleInputContainer>
+        <Input
+          type="text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="할 일을 입력해 주세요"
+          maxLength={20}
+        />
+      </TitleInputContainer>
     </form>
   );
 };
