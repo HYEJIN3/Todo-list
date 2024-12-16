@@ -5,6 +5,8 @@ import Image from "next/image";
 
 interface TodoItemProps {
   todo: Todo;
+  onCompleted: (id: number) => void;
+  onDelete: (id: number) => void;
 }
 
 const Item = styled.li`
@@ -24,7 +26,10 @@ const CheckboxContainer = styled.div`
   margin-right: 10px;
   cursor: pointer;
 `;
-const Text = styled.span<{ completed: boolean }>``;
+const Text = styled.span<{ completed: boolean }>`
+  flex-grow: 1;
+  color: ${(props) => (props.completed ? "#868686" : "#000000")};
+`;
 
 const DeleteButton = styled.button`
   background: none;
@@ -35,10 +40,18 @@ const DeleteButton = styled.button`
   justify-content: center;
 `;
 
-export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
+export const TodoItem: React.FC<TodoItemProps> = ({
+  todo,
+  onCompleted,
+  onDelete,
+}) => {
   return (
     <Item data-testid={`todo-item-${todo.id}`}>
-      <CheckboxContainer>
+      <CheckboxContainer
+        onClick={() => onCompleted(todo.id)}
+        aria-label="checkbox"
+        role="checkbox"
+      >
         {todo.completed && (
           <Image
             src={"/assets/icons/Check.svg"}
@@ -49,7 +62,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
         )}
       </CheckboxContainer>
       <Text completed={todo.completed}>{todo.text}</Text>
-      <DeleteButton>
+      <DeleteButton onClick={() => onDelete(todo.id)} aria-label="delete">
         <Image
           src={"/assets/icons/Close.svg"}
           width={18}

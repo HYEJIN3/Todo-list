@@ -8,7 +8,7 @@ interface TodoStore {
   filter: TodoFilter;
   todoId: number;
   addTodo: (text: string) => void;
-  toggleTodo: (id: number) => void;
+  completedTodo: (id: number) => void;
   deleteTodo: (id: number) => void;
   setFilter: (filter: TodoFilter) => void;
 }
@@ -26,7 +26,7 @@ export const useTodoStore = create<TodoStore>((set) => ({
       const newTodo: Todo = { id: state.todoId, text, completed: false };
       return { todos: [...state.todos, newTodo], todoId: state.todoId + 1 };
     }),
-  toggleTodo: (id) =>
+  completedTodo: (id) =>
     set((state) => ({
       todos: state.todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo

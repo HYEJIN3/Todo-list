@@ -21,11 +21,20 @@ const Title = styled.div`
 `;
 
 export const TodoUserListPage: React.FC = () => {
-  const todos: any = [];
+  const { todos, filter, addTodo, completedTodo, deleteTodo, setFilter } =
+    useTodoStore();
+
   return (
     <Container>
       <Title>Todo List</Title>
-      <TodoList todos={todos} />
+      <TodoInput onAdd={addTodo} />
+      <TodoList
+        todos={todos}
+        filter={filter}
+        onCompleted={completedTodo}
+        onDelete={deleteTodo}
+        onFilterChange={setFilter}
+      />
     </Container>
   );
 };
