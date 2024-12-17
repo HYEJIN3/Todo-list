@@ -21,6 +21,7 @@ const ListContainer = styled.div`
 const List = styled.ul`
   list-style-type: none;
   padding: 0;
+  margin-top: 24px;
 `;
 
 const FilterContainer = styled.div`

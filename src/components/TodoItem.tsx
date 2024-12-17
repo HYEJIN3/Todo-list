@@ -15,8 +15,8 @@ const Item = styled.li`
   padding: 10px 0;
 `;
 
-const CheckboxContainer = styled.div`
-  border: 1px solid #e5e5e5;
+const CheckboxContainer = styled.div<{ completed: boolean }>`
+  border: ${(props) => (props.completed ? "none" : "1px solid #e5e5e5")};
   border-radius: 50%;
   width: 32px;
   height: 32px;
@@ -25,8 +25,11 @@ const CheckboxContainer = styled.div`
   justify-content: center;
   margin-right: 10px;
   cursor: pointer;
+  background-color: ${(props) => (props.completed ? "#2182F3" : "#FFFFFF")};
 `;
 const Text = styled.span<{ completed: boolean }>`
+  font-size: 20px;
+  font-weight: 400;
   flex-grow: 1;
   color: ${(props) => (props.completed ? "#868686" : "#000000")};
 `;
@@ -48,6 +51,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
   return (
     <Item data-testid={`todo-item-${todo.id}`}>
       <CheckboxContainer
+        completed={todo.completed}
         onClick={() => onCompleted(todo.id)}
         aria-label="checkbox"
         role="checkbox"

@@ -9,7 +9,7 @@ interface TodoInputProps {
 
 const Input = styled.input`
   width: 100%;
-f  padding: 32px;
+  padding: 32px;
   font-size: 20px;
   border: none;
   border-radius: 24px;
